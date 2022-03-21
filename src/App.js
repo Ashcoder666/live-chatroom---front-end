@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import {useState} from 'react'
 import Chat from './Chat';
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://livechat-backend6.herokuapp.com/");
 
 function App() {
   const [username,setUsername]= useState('')
@@ -11,7 +11,7 @@ function App() {
   const [showChat,setshowChat]= useState(false)
 
   const joinRoom = ()=>{
-    if( username !== "" || roomid !== "" ){
+    if( username !== "" && roomid !== "" ){
         socket.emit('join_room', roomid)
         setshowChat(true)
     }
